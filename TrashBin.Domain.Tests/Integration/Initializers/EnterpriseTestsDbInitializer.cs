@@ -12,7 +12,7 @@ namespace TrashBin.Domain.Tests.Integration.Initializers
 
             EnterpriseId = Guid.NewGuid();
                 
-            var enterprise = new Enterprise { EnterpriseId = EnterpriseId, Name = "Software-Projects" };
+            var enterprise = new Enterprise { Id = EnterpriseId, Name = "Software-Projects" };
             context.Companies.Add(enterprise);
 
             context.SaveChanges();

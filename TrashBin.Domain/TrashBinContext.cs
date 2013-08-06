@@ -13,5 +13,9 @@ namespace TrashBin.Domain
         }
 
         public DbSet<Enterprise> Companies { get; set; }
+
+        public DbSet<Contract> Contracts { get; set; }
+
+        public DbSet<Project> Projects { get; set; }
     }
 }

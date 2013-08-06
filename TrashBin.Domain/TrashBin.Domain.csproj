@@ -46,7 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Addendum.cs" />
+    <Compile Include="Address.cs" />
+    <Compile Include="Contract.cs" />
     <Compile Include="Enterprise.cs" />
+    <Compile Include="Entity.cs" />
+    <Compile Include="Project.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TrashBinContext.cs" />
     <Compile Include="TrashBinDatabaseInitializer.cs" />

@@ -2,10 +2,12 @@
 
 namespace TrashBin.Domain
 {
-    public class Enterprise
+    public class Enterprise : Entity 
     {
-        public Guid EnterpriseId { get; set; }
-
         public string Name { get; set; }
+
+        public Address Address { get; set; }
+
+        public Guid? AddressId { get; set; }
     }
 }

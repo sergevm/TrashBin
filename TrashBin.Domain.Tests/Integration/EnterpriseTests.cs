@@ -11,7 +11,7 @@ namespace TrashBin.Domain.Tests.Integration
         {
             using (var context = new TrashBinContext())
             {
-                var enterprise = context.Companies.Single(c => c.EnterpriseId == Initializer.EnterpriseId);
+                var enterprise = context.Companies.Single(c => c.Id == Initializer.EnterpriseId);
                 Assert.NotNull(enterprise);
                 Assert.Equal("Software-Projects", enterprise.Name);
             }

@@ -11,7 +11,7 @@ namespace TrashBin.Server
         {
             using (var context = new TrashBinContext())
             {
-                var company = new Enterprise {Name = message.Name, EnterpriseId = Guid.NewGuid()};
+                var company = new Enterprise {Name = message.Name, Id = Guid.NewGuid()};
                 context.Companies.Add(company);
                 context.SaveChanges();
             }

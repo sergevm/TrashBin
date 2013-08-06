@@ -7,7 +7,7 @@ namespace TrashBin.Domain
     {
         protected override void Seed(TrashBinContext context)
         {
-            var company = new Enterprise {EnterpriseId = Guid.NewGuid(), Name = "Sofware-Projects"};
+            var company = new Enterprise {Id = Guid.NewGuid(), Name = "Sofware-Projects"};
             context.Companies.Add(company);
 
             context.SaveChanges();
