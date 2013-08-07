@@ -1,0 +1,12 @@
+﻿@model TrashBin.Mvc.Models.ProjectListViewModel
+
+@{
+    ViewBag.Title = "Projects";
+}
+
+<ul>
+    @foreach (var project in Model.Projects)
+    {
+        <li>@project.Name</li>
+    }
+</ul>

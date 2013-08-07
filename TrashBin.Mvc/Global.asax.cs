@@ -1,10 +1,15 @@
-﻿using System.Web.Http;
+﻿using System.Data.Entity;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Autofac;
 using Autofac.Integration.Mvc;
 using NServiceBus;
+using TrashBin.Domain;
+using TrashBin.Mvc.App_Start;
+using TrashBin.Mvc.Models;
+using TrashBin.Mvc.Services;
 
 namespace TrashBin.Mvc
 {
@@ -22,17 +27,12 @@ namespace TrashBin.Mvc
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
+            AutofacConfig.Configure();
 
-            var builder = new ContainerBuilder();
-            builder.RegisterControllers(typeof(MvcApplication).Assembly);
-            var container = builder.Build();
+            Database.SetInitializer(new TrashBinDatabaseInitializer());
 
-            Configure.With().AutofacBuilder(container)
-                .UnicastBus()
-                .CreateBus()
-                .Start(() => Configure.Instance.ForInstallationOn<NServiceBus.Installation.Environments.Windows>().Install());
-
-            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+            // TODO: move this to its' own bootstrapper 
+            AutoMapper.Mapper.CreateMap<Project, ProjectViewModel>();
         }
     }
 }
