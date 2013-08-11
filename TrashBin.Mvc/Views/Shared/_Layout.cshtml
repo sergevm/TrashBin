@@ -5,8 +5,8 @@
         <title>@ViewBag.Title - Trashbin</title>
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
-        @Styles.Render("~/Content/css")
         @Styles.Render("~/Content/bootstrap")
+        @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")
     </head>
     <body>
@@ -18,11 +18,9 @@
             </div>
             <div class="row">
                 <div class="span4" id="menu">
-                    <h3>The menu ...</h3>
                     @RenderSection("menu", false)
                 </div>               
                 <div class="span8" id="content">
-                    <h3 class="text-center">The content ...</h3>
                     @RenderBody()
                 </div>
             </div>
@@ -32,6 +30,7 @@
         </footer>
 
         @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryval")
         @Scripts.Render("~/bundles/bootstrap")
         @RenderSection("scripts", required: false)
     </body>

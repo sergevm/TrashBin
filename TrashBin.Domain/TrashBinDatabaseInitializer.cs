@@ -3,7 +3,7 @@ using System.Data.Entity;
 
 namespace TrashBin.Domain
 {
-    public class TrashBinDatabaseInitializer : DropCreateDatabaseAlways<TrashBinContext> 
+    public class TrashBinDatabaseInitializer : DropCreateDatabaseIfModelChanges<TrashBinContext> 
     {
         protected override void Seed(TrashBinContext context)
         {

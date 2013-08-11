@@ -4,9 +4,20 @@
     ViewBag.Title = "Projects";
 }
 
-<ul>
+<table class="table table-striped">
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th></th>
+    </tr>
     @foreach (var project in Model.Projects)
     {
-        <li>@project.Name</li>
+        <tr>
+            <td>@project.Name</td>
+            <td>@project.Description</td>
+            <td>@Html.ActionLink("Delete", "Delete", new{ id = @project.Id })</td>
+        </tr>
     }
-</ul>
+</table>
+
+@Html.ActionLink("Add Project", "Create", null, new { @class = "ui-button"})

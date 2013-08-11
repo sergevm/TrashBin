@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using TrashBin.Mvc.Models;
 using TrashBin.Mvc.Services;
 
 namespace TrashBin.Mvc.Controllers
@@ -16,99 +14,34 @@ namespace TrashBin.Mvc.Controllers
             this.projectService = projectService;
         }
 
-        //
-        // GET: /Project/
-
         public ActionResult Index()
         {
             var projectList = projectService.GetProjects();
             return View(projectList);
         }
 
-        //
-        // GET: /Project/Details/5
-
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        //
-        // GET: /Project/Create
 
         public ActionResult Create()
         {
             return View();
         }
 
-        //
-        // POST: /Project/Create
-
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(ProjectViewModel project)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
-
+                projectService.CreateProject(project);
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // GET: /Project/Edit/5
-
-        public ActionResult Edit(int id)
-        {
+                 
             return View();
         }
 
-        //
-        // POST: /Project/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Delete(Guid id)
         {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // GET: /Project/Delete/5
-
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /Project/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            projectService.DeleteProject(id);
+            return RedirectToAction("Index");
         }
     }
 }

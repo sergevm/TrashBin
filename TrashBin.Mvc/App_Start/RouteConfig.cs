@@ -14,7 +14,7 @@ namespace TrashBin.Mvc
                 "{controller}/{action}/{id}", 
                 new
                     {
-                        controller = "Company", 
+                        controller = "Project", 
                         action = "Index", 
                         id = UrlParameter.Optional
                     }

@@ -1,0 +1,24 @@
+﻿@model TrashBin.Mvc.Models.ProjectViewModel
+
+@{
+    ViewBag.Title = "Add new project";
+}
+
+@using (Html.BeginForm("Create", "Project", FormMethod.Post, new{@class = "form-horizontal", id = "input-form"}))
+{
+    <div class="control-group">
+        <label class="control-label">Name</label>
+        <div class="controls">
+            @Html.EditorFor(p => p.Name)
+            @Html.ValidationMessageFor(p => p.Name)
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Description</label>
+        <div class="controls">
+            @Html.EditorFor(p => p.Description)
+            @Html.ValidationMessageFor(p => p.Description)
+        </div>
+    </div>    
+    <input type="submit" value="Save"/>
+}

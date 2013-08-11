@@ -12,10 +12,10 @@ namespace TrashBin.Server
     {
 	    public void Init()
 	    {
-	        using (var context = new TrashBinContext())
-	        {
-                context.Database.Initialize(false);
-	        }
+//	        using (var context = new TrashBinContext())
+//	        {
+//                context.Database.Initialize(false);
+//	        }
 	    }
     }
 }

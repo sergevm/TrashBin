@@ -46,6 +46,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CreateCompany.cs" />
+    <Compile Include="CreateProject.cs" />
+    <Compile Include="DeleteProject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

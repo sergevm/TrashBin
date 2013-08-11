@@ -5,3 +5,15 @@
 #content {
     background-color: honeydew;
 }
+
+.field-validation-error {
+    color: red;
+}
+
+input.input-validation-error {
+    border: 1px solid red;
+}
+
+input.valid {
+    border: 1px solid green;
+}

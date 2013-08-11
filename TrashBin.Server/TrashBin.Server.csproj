@@ -56,6 +56,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CreateCompanyHandler.cs" />
+    <Compile Include="CreateProjectHandler.cs" />
+    <Compile Include="DeleteProjectHandler.cs" />
     <Compile Include="EndpointConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
