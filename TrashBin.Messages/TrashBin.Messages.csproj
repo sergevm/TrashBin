@@ -45,9 +45,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CreateCompany.cs" />
-    <Compile Include="CreateProject.cs" />
-    <Compile Include="DeleteProject.cs" />
+    <Compile Include="Commands\CreateCompany.cs" />
+    <Compile Include="Commands\CreateProject.cs" />
+    <Compile Include="Commands\DeleteProject.cs" />
+    <Compile Include="Events\ProjectCreatedEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -2,6 +2,7 @@
 using NServiceBus;
 using TrashBin.Domain;
 using TrashBin.Messages;
+using TrashBin.Messages.Commands;
 
 namespace TrashBin.Server
 {

@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
+using NServiceBus;
 using TrashBin.Domain;
 using TrashBin.Mvc.Services;
 
@@ -13,10 +14,17 @@ namespace TrashBin.Mvc
             builder.RegisterType<TrashBinContext>().InstancePerHttpRequest();
 
             // Auto resolve all service type classes
-            builder.RegisterAssemblyTypes(typeof(MvcApplication).Assembly).InNamespaceOf<ProjectService>()
-                   .Where(t => t.Name.EndsWith("Service"))
-                   .AsImplementedInterfaces();
-            
+            builder.RegisterAssemblyTypes(typeof(MvcApplication).Assembly)
+                .InNamespaceOf<ProjectService>()
+                .AsImplementedInterfaces()
+                .InstancePerDependency();
+
+            // Resolve NServiceBus message handlers
+            builder.RegisterAssemblyTypes(typeof(MvcApplication).Assembly)
+                .Where(t => t.IsClosedTypeOf(typeof(IHandleMessages<>)))
+                .AsSelf()
+                .InstancePerDependency();
+
             // Register the controllers in the assembly
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
         }

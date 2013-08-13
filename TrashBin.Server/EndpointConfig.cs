@@ -1,21 +1,27 @@
-using System.Data.Entity;
+using Autofac;
 using NServiceBus;
-using TrashBin.Domain;
 
 namespace TrashBin.Server
 {
-    /*
-		This class configures this endpoint as a Server. More information about how to configure the NServiceBus host
-		can be found here: http://nservicebus.com/GenericHost.aspx
-	*/
-	public class EndpointConfig : IConfigureThisEndpoint, AsA_Server, IWantToRunBeforeConfiguration
-    {
-	    public void Init()
+    [EndpointName("TrashBin.Commands")]
+	public class EndpointConfig : IConfigureThisEndpoint, IWantCustomInitialization, AsA_Publisher
+	{
+	    private static ILifetimeScope container;
+
+	    void IWantCustomInitialization.Init()
 	    {
-//	        using (var context = new TrashBinContext())
-//	        {
-//                context.Database.Initialize(false);
-//	        }
-	    }
+            var containerBuilder = new ContainerBuilder();
+
+            containerBuilder.RegisterAssemblyTypes(GetType().Assembly)
+                            .Where(type => type.Name.EndsWith("Handler"))
+                            .AsImplementedInterfaces().AsSelf()
+                            .InstancePerDependency();
+
+            container = containerBuilder.Build();
+
+            Configure.With().AutofacBuilder(container)
+                .UseTransport<Msmq>()
+                .UnicastBus();
+        }
     }
 }

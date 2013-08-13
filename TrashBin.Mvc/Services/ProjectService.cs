@@ -2,7 +2,7 @@
 using System.Linq;
 using NServiceBus;
 using TrashBin.Domain;
-using TrashBin.Messages;
+using TrashBin.Messages.Commands;
 using TrashBin.Mvc.Models;
 
 namespace TrashBin.Mvc.Services
