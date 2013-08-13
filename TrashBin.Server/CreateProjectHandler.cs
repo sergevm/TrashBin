@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using NServiceBus;
 using TrashBin.Domain;
 using TrashBin.Messages.Commands;
@@ -22,6 +23,9 @@ namespace TrashBin.Server
                 var project = new Project {Id = Guid.NewGuid(), Name = message.Name, Description = message.Description};
                 context.Projects.Add(project);
                 context.SaveChanges();
+
+                // DEMO purposes ...
+                Thread.Sleep(2000);
 
                 bus.Publish(new ProjectCreatedEvent { ProjectId = project.Id });
             }

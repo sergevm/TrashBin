@@ -2,6 +2,7 @@
 using Autofac.Integration.Mvc;
 using NServiceBus;
 using TrashBin.Domain;
+using TrashBin.Mvc.Hubs;
 using TrashBin.Mvc.Services;
 
 namespace TrashBin.Mvc
@@ -24,6 +25,8 @@ namespace TrashBin.Mvc
                 .Where(t => t.IsClosedTypeOf(typeof(IHandleMessages<>)))
                 .AsSelf()
                 .InstancePerDependency();
+
+            builder.RegisterType<AsyncWorkNotificationHub>().SingleInstance();
 
             // Register the controllers in the assembly
             builder.RegisterControllers(typeof(MvcApplication).Assembly);

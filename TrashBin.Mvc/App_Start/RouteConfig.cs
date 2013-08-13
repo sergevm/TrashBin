@@ -9,6 +9,9 @@ namespace TrashBin.Mvc
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            // Per the docs, the hub route should be registered before all other route registrations!
+            RouteTable.Routes.MapHubs();
+
             routes.MapRoute(
                 "Default", 
                 "{controller}/{action}/{id}", 

@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.Mvc;
+using Microsoft.AspNet.SignalR;
 using NServiceBus;
 
 namespace TrashBin.Mvc.App_Start
