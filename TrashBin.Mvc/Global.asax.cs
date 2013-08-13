@@ -3,13 +3,9 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using Autofac;
-using Autofac.Integration.Mvc;
-using NServiceBus;
 using TrashBin.Domain;
 using TrashBin.Mvc.App_Start;
 using TrashBin.Mvc.Models;
-using TrashBin.Mvc.Services;
 
 namespace TrashBin.Mvc
 {
